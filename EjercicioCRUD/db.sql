@@ -62,8 +62,8 @@ CREATE TABLE `detalle_reparaciones` (
   PRIMARY KEY (`id`),
   KEY `detalle_reparaciones_id_servicio_foreign` (`id_servicio`),
   KEY `detalle_reparaciones_id_pieza_foreign` (`id_pieza`),
-  CONSTRAINT `detalle_reparaciones_id_pieza_foreign` FOREIGN KEY (`id_pieza`) REFERENCES `piezas` (`id`),
-  CONSTRAINT `detalle_reparaciones_id_servicio_foreign` FOREIGN KEY (`id_servicio`) REFERENCES `servicios` (`id`)
+  CONSTRAINT `detalle_reparaciones_id_pieza_foreign` FOREIGN KEY (`id_pieza`) REFERENCES `piezas` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `detalle_reparaciones_id_servicio_foreign` FOREIGN KEY (`id_servicio`) REFERENCES `servicios` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -250,31 +250,6 @@ LOCK TABLES `proveedores` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `roles`
---
-
-DROP TABLE IF EXISTS `roles`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `roles` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(255) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `roles`
---
-
-LOCK TABLES `roles` WRITE;
-/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `servicios`
 --
 
@@ -288,19 +263,19 @@ CREATE TABLE `servicios` (
   `diagnostico` text DEFAULT NULL,
   `solucion` text DEFAULT NULL,
   `id_cliente` bigint(20) unsigned NOT NULL,
-  `id_tecnico` bigint(20) unsigned NOT NULL,
   `id_equipo` bigint(20) unsigned NOT NULL,
+  `id_tecnico` bigint(20) unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `servicios_id_estado_foreign` (`id_estado`),
   KEY `servicios_id_cliente_foreign` (`id_cliente`),
-  KEY `servicios_id_tecnico_foreign` (`id_tecnico`),
   KEY `servicios_id_equipo_foreign` (`id_equipo`),
+  KEY `servicios_id_tecnico_foreign` (`id_tecnico`),
   CONSTRAINT `servicios_id_cliente_foreign` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id`),
   CONSTRAINT `servicios_id_equipo_foreign` FOREIGN KEY (`id_equipo`) REFERENCES `equipos` (`id`),
   CONSTRAINT `servicios_id_estado_foreign` FOREIGN KEY (`id_estado`) REFERENCES `estado_servicios` (`id`),
-  CONSTRAINT `servicios_id_tecnico_foreign` FOREIGN KEY (`id_tecnico`) REFERENCES `usuarios` (`id`)
+  CONSTRAINT `servicios_id_tecnico_foreign` FOREIGN KEY (`id_tecnico`) REFERENCES `tecnicos` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -311,6 +286,31 @@ CREATE TABLE `servicios` (
 LOCK TABLES `servicios` WRITE;
 /*!40000 ALTER TABLE `servicios` DISABLE KEYS */;
 /*!40000 ALTER TABLE `servicios` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tecnicos`
+--
+
+DROP TABLE IF EXISTS `tecnicos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tecnicos` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tecnicos`
+--
+
+LOCK TABLES `tecnicos` WRITE;
+/*!40000 ALTER TABLE `tecnicos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tecnicos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -337,37 +337,6 @@ LOCK TABLES `tipos_equipos` WRITE;
 /*!40000 ALTER TABLE `tipos_equipos` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tipos_equipos` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `usuarios`
---
-
-DROP TABLE IF EXISTS `usuarios`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `usuarios` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `id_rol` bigint(20) unsigned NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `usuarios_email_unique` (`email`),
-  KEY `usuarios_id_rol_foreign` (`id_rol`),
-  CONSTRAINT `usuarios_id_rol_foreign` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `usuarios`
---
-
-LOCK TABLES `usuarios` WRITE;
-/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -378,4 +347,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-02  3:42:23
+-- Dump completed on 2024-06-02  8:41:07
