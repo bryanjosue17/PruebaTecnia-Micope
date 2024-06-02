@@ -12,7 +12,7 @@
             <label class="form-label">Nombre</label>
             <p>{{ $marca->nombre }}</p>
         </div>
-        <a href="{{ route('marcas.index') }}" class="btn btn-secondary">Volver</a>
+        <a href="{{ route('marcas.index') }}" class="btn btn-secondary">Volver a la lista</a>
     </div>
 </div>
 @endsection

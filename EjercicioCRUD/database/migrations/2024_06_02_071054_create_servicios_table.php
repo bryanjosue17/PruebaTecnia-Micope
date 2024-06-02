@@ -16,6 +16,7 @@ class CreateServiciosTable extends Migration
             $table->text('solucion')->nullable();
             $table->foreignId('id_cliente')->constrained('clientes');
             $table->foreignId('id_equipo')->constrained('equipos');
+            $table->foreignId('id_tecnico')->constrained('tecnicos');
             $table->timestamps();
         });
     }

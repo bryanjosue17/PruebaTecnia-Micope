@@ -9,7 +9,7 @@
         <p class="card-text"><strong>Descripción:</strong> {{ $detalle_reparacione->descripcion }}</p>
         <p class="card-text"><strong>Cantidad:</strong> {{ $detalle_reparacione->cantidad }}</p>
         <p class="card-text"><strong>Costo:</strong> {{ $detalle_reparacione->costo }}</p>
-        <a href="{{ route('detalle_reparaciones.index') }}" class="btn btn-secondary">Volver</a>
+        <a href="{{ route('detalle_reparaciones.index') }}" class="btn btn-secondary">Volver a la lista</a>
     </div>
 </div>
 @endsection

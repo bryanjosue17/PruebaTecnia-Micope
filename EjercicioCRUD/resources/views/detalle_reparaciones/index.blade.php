@@ -8,9 +8,9 @@
     </div>
     <div class="card-body">
         @if($detalles_reparacion->isEmpty())
-            <p class="text-center">No hay detalles de reparaciones registrados.</p>
+            <p class="text-center">Sin información</p>
         @else
-            <table class="table table-striped">
+        <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>ID</th>

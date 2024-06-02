@@ -7,6 +7,9 @@
         <a href="{{ route('marcas.create') }}" class="btn btn-primary float-end">Agregar Marca</a>
     </div>
     <div class="card-body">
+        @if($marcas->isEmpty())
+            <p class="text-center">Sin información</p>
+        @else
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -21,7 +24,7 @@
                         <td>{{ $marca->id }}</td>
                         <td>{{ $marca->nombre }}</td>
                         <td>
-                            <a href="{{ route('marcas.show', $marca->id) }}" class="btn btn-success btn-sm">Ver</a>
+                            <a href="{{ route('marcas.show', $marca->id) }}" class="btn btn-info btn-sm">Ver</a>
                             <a href="{{ route('marcas.edit', $marca->id) }}" class="btn btn-warning btn-sm">Editar</a>
                             <form action="{{ route('marcas.destroy', $marca->id) }}" method="POST" style="display:inline-block;">
                                 @csrf
@@ -33,6 +36,7 @@
                 @endforeach
             </tbody>
         </table>
+        @endif
     </div>
 </div>
 @endsection

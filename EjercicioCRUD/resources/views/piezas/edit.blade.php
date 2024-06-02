@@ -26,6 +26,7 @@
             <div class="mb-3">
                 <label for="id_proveedor" class="form-label">Proveedor</label>
                 <select class="form-select" id="id_proveedor" name="id_proveedor">
+                <option value="">Sin selección</option>
                     @foreach($proveedores as $proveedor)
                         <option value="{{ $proveedor->id }}" {{ $pieza->id_proveedor == $proveedor->id ? 'selected' : '' }}>{{ $proveedor->nombre }}</option>
                     @endforeach

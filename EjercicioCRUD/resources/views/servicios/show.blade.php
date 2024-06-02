@@ -2,15 +2,18 @@
 
 @section('content')
 <div class="card mt-3">
-    <div class="card-header">Detalles del Servicio</div>
+    <div class="card-header">
+        Detalles del Servicio
+        <a href="{{ route('servicios.index') }}" class="btn btn-secondary float-end">Volver</a>
+    </div>
     <div class="card-body">
-        <h5 class="card-title">Servicio #{{ $servicio->id }}</h5>
-        <p class="card-text"><strong>Fecha de Recepción:</strong> {{ $servicio->fecha_recepcion }}</p>
-        <p class="card-text"><strong>Estado:</strong> {{ $servicio->estado->nombre }}</p>
-        <p class="card-text"><strong>Cliente:</strong> {{ $servicio->cliente->nombre }}</p>
-        <p class="card-text"><strong>Equipo:</strong> {{ $servicio->equipo->modelo }}</p>
-        <p class="card-text"><strong>Diagnóstico:</strong> {{ $servicio->diagnostico }}</p>
-        <p class="card-text"><strong>Solución:</strong> {{ $servicio->solucion }}</p>
+        <p><strong>Fecha Recepción:</strong> {{ $servicio->fecha_recepcion }}</p>
+        <p><strong>Estado:</strong> {{ $servicio->estado->nombre }}</p>
+        <p><strong>Cliente:</strong> {{ $servicio->cliente->nombre }}</p>
+        <p><strong>Equipo:</strong> {{ $servicio->equipo->modelo }}</p>
+        <p><strong>Técnico:</strong> {{ $servicio->tecnico ? $servicio->tecnico->nombre : 'No asignado' }}</p>
+        <p><strong>Diagnóstico:</strong> {{ $servicio->diagnostico }}</p>
+        <p><strong>Solución:</strong> {{ $servicio->solucion }}</p>
         <a href="{{ route('servicios.index') }}" class="btn btn-secondary">Volver a la lista</a>
     </div>
 </div>

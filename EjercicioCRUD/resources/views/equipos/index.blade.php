@@ -7,7 +7,10 @@
         <a href="{{ route('equipos.create') }}" class="btn btn-primary float-end">Agregar Equipo</a>
     </div>
     <div class="card-body">
-    <table class="table table-striped">
+    @if($equipos->isEmpty())
+            <p class="text-center">Sin información</p>
+        @else
+        <table class="table table-striped">
     <thead>
         <tr>
             <th>ID</th>
@@ -27,7 +30,7 @@
                 <td>{{ $equipo->marca ? $equipo->marca->nombre : 'N/A' }}</td>
                 <td>{{ $equipo->tipoEquipo ? $equipo->tipoEquipo->nombre : 'N/A' }}</td>
                 <td>
-                    <a href="{{ route('equipos.show', $equipo->id) }}" class="btn btn-success btn-sm">Ver</a>
+                    <a href="{{ route('equipos.show', $equipo->id) }}" class="btn btn-info btn-sm">Ver</a>
                     <a href="{{ route('equipos.edit', $equipo->id) }}" class="btn btn-warning btn-sm">Editar</a>
                     <form action="{{ route('equipos.destroy', $equipo->id) }}" method="POST" style="display:inline-block;">
                         @csrf
@@ -39,6 +42,7 @@
         @endforeach
     </tbody>
 </table>
+        @endif
 
     </div>
 </div>

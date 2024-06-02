@@ -7,6 +7,9 @@
         <a href="{{ route('proveedores.create') }}" class="btn btn-primary float-end">Agregar Proveedor</a>
     </div>
     <div class="card-body">
+        @if($proveedores->isEmpty())
+            <p class="text-center">Sin información</p>
+        @else
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -27,7 +30,7 @@
                         <td>{{ $proveedore->telefono }}</td>
                         <td>{{ $proveedore->email }}</td>
                         <td>
-                            <a href="{{ route('proveedores.show', $proveedore->id) }}" class="btn btn-success btn-sm">Ver</a>
+                            <a href="{{ route('proveedores.show', $proveedore->id) }}" class="btn btn-info btn-sm">Ver</a>
                             <a href="{{ route('proveedores.edit', $proveedore->id) }}" class="btn btn-warning btn-sm">Editar</a>
                             <form action="{{ route('proveedores.destroy', $proveedore->id) }}" method="POST" style="display:inline-block;">
                                 @csrf
@@ -39,6 +42,7 @@
                 @endforeach
             </tbody>
         </table>
+        @endif
     </div>
 </div>
 @endsection

@@ -22,6 +22,7 @@
             <div class="mb-3">
                 <label for="id_marca" class="form-label">Marca</label>
                 <select class="form-control" id="id_marca" name="id_marca" required>
+                <option value="">Sin selección</option>
                     @foreach($marcas as $marca)
                         <option value="{{ $marca->id }}" {{ $equipo->id_marca == $marca->id ? 'selected' : '' }}>{{ $marca->nombre }}</option>
                     @endforeach
@@ -30,6 +31,7 @@
             <div class="mb-3">
                 <label for="id_tipo_equipo" class="form-label">Tipo de Equipo</label>
                 <select class="form-control" id="id_tipo_equipo" name="id_tipo_equipo" required>
+                <option value="">Sin selección</option>
                     @foreach($tipos_equipos as $tipo)
                         <option value="{{ $tipo->id }}" {{ $equipo->id_tipo_equipo == $tipo->id ? 'selected' : '' }}>{{ $tipo->nombre }}</option>
                     @endforeach

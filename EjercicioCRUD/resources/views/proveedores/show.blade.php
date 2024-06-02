@@ -24,7 +24,7 @@
             <label class="form-label">Email</label>
             <p>{{ $proveedore->email }}</p>
         </div>
-        <a href="{{ route('proveedores.index') }}" class="btn btn-primary">Volver</a>
+        <a href="{{ route('proveedores.index') }}" class="btn btn-secondary">Volver a la lista</a>
     </div>
 </div>
 @endsection

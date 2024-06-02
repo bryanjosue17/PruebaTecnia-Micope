@@ -10,13 +10,19 @@ class Servicio extends Model
     use HasFactory;
 
     protected $fillable = [
-        'fecha_recepcion', 
-        'id_estado', 
-        'diagnostico', 
-        'solucion', 
-        'id_cliente', 
-        'id_equipo'
+        'fecha_recepcion',
+        'id_estado',
+        'diagnostico',
+        'solucion',
+        'id_cliente',
+        'id_equipo',
+        'id_tecnico',
     ];
+
+    public function estado()
+    {
+        return $this->belongsTo(EstadoServicio::class, 'id_estado');
+    }
 
     public function cliente()
     {
@@ -28,18 +34,8 @@ class Servicio extends Model
         return $this->belongsTo(Equipo::class, 'id_equipo');
     }
 
-    public function estado()
+    public function tecnico()
     {
-        return $this->belongsTo(EstadoServicio::class, 'id_estado');
-    }
-
-    public function historialEstados()
-    {
-        return $this->hasMany(HistorialEstado::class, 'id_servicio');
-    }
-
-    public function detallesReparacion()
-    {
-        return $this->hasMany(DetalleReparacion::class, 'id_servicio');
+        return $this->belongsTo(Tecnico::class, 'id_tecnico');
     }
 }

@@ -24,7 +24,7 @@
             <label class="form-label">Tipo de Equipo</label>
             <p>{{ $equipo->tipoEquipo->nombre }}</p>
         </div>
-        <a href="{{ route('equipos.index') }}" class="btn btn-secondary mt-3">Volver</a>
+        <a href="{{ route('equipos.index') }}" class="btn btn-secondary mt-3">Volver a la lista</a>
     </div>
 </div>
 @endsection

@@ -28,7 +28,7 @@
             <label class="form-label">Proveedor</label>
             <p>{{ $pieza->proveedor->nombre }}</p>
         </div>
-        <a href="{{ route('piezas.index') }}" class="btn btn-secondary">Volver</a>
+        <a href="{{ route('piezas.index') }}" class="btn btn-secondary">Volver a la lista</a>
     </div>
 </div>
 @endsection

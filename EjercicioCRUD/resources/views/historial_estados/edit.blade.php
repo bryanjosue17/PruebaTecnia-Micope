@@ -19,6 +19,7 @@
             <div class="mb-3">
                 <label for="id_servicio" class="form-label">Servicio</label>
                 <select class="form-select" id="id_servicio" name="id_servicio">
+                <option value="">Sin selección</option>
                     @foreach($servicios as $servicio)
                         <option value="{{ $servicio->id }}" {{ $historial_estado->id_servicio == $servicio->id ? 'selected' : '' }}>{{ $servicio->id }}</option>
                     @endforeach
@@ -27,6 +28,7 @@
             <div class="mb-3">
                 <label for="id_estado" class="form-label">Estado</label>
                 <select class="form-select" id="id_estado" name="id_estado">
+                <option value="">Sin selección</option>
                     @foreach($estado_servicios as $estado)
                         <option value="{{ $estado->id }}" {{ $historial_estado->id_estado == $estado->id ? 'selected' : '' }}>{{ $estado->nombre }}</option>
                     @endforeach

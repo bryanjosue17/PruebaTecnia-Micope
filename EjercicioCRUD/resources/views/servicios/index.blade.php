@@ -7,6 +7,9 @@
         <a href="{{ route('servicios.create') }}" class="btn btn-primary float-end">Agregar Servicio</a>
     </div>
     <div class="card-body">
+        @if($servicios->isEmpty())
+            <p class="text-center">Sin información</p>
+        @else
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -14,8 +17,8 @@
                     <th>Fecha Recepción</th>
                     <th>Estado</th>
                     <th>Cliente</th>
-                    <th>Técnico</th>
                     <th>Equipo</th>
+                    <th>Técnico</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -27,8 +30,9 @@
                         <td>{{ $servicio->estado->nombre }}</td>
                         <td>{{ $servicio->cliente->nombre }}</td>
                         <td>{{ $servicio->equipo->modelo }}</td>
+                        <td>{{ $servicio->tecnico ? $servicio->tecnico->nombre : 'No asignado' }}</td>
                         <td>
-                            <a href="{{ route('servicios.show', $servicio->id) }}" class="btn btn-success btn-sm">Ver</a>
+                            <a href="{{ route('servicios.show', $servicio->id) }}" class="btn btn-info btn-sm">Ver</a>
                             <a href="{{ route('servicios.edit', $servicio->id) }}" class="btn btn-warning btn-sm">Editar</a>
                             <form action="{{ route('servicios.destroy', $servicio->id) }}" method="POST" style="display:inline-block;">
                                 @csrf
@@ -40,6 +44,7 @@
                 @endforeach
             </tbody>
         </table>
+        @endif
     </div>
 </div>
 @endsection

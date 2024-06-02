@@ -20,6 +20,7 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('equipos.index') }}">Equipos</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('servicios.index') }}">Servicios</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('detalle_reparaciones.index') }}">Detalles de Reparaciones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('tecnicos.index') }}">Tecnicos</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="catalogosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Catálogos

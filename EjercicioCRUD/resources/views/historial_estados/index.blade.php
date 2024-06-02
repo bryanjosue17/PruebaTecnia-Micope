@@ -7,7 +7,10 @@
         <a href="{{ route('historial_estados.create') }}" class="btn btn-primary">Agregar Nuevo</a>
     </div>
     <div class="card-body">
-        <table class="table">
+        @if($historial_estados->isEmpty())
+            <p class="text-center">Sin información</p>
+        @else
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -37,6 +40,7 @@
                 @endforeach
             </tbody>
         </table>
+        @endif
     </div>
 </div>
 @endsection

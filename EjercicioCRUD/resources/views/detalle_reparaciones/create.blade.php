@@ -9,6 +9,7 @@
             <div class="mb-3">
                 <label for="id_servicio" class="form-label">Servicio</label>
                 <select class="form-select" id="id_servicio" name="id_servicio">
+                <option value="">Sin selección</option>
                     @foreach($servicios as $servicio)
                         <option value="{{ $servicio->id }}">{{ $servicio->id }}</option>
                     @endforeach
@@ -17,6 +18,7 @@
             <div class="mb-3">
                 <label for="id_pieza" class="form-label">Pieza</label>
                 <select class="form-select" id="id_pieza" name="id_pieza">
+                <option value="">Sin selección</option>
                     @foreach($piezas as $pieza)
                         <option value="{{ $pieza->id }}">{{ $pieza->nombre }}</option>
                     @endforeach

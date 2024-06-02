@@ -20,7 +20,7 @@
             <label class="form-label">Fecha</label>
             <p>{{ $historial_estado->fecha }}</p>
         </div>
-        <a href="{{ route('historial_estados.index') }}" class="btn btn-secondary">Volver</a>
+        <a href="{{ route('historial_estados.index') }}" class="btn btn-secondary">Volver a la lista</a>
     </div>
 </div>
 @endsection

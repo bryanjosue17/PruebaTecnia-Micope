@@ -12,6 +12,7 @@ use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\TipoEquipoController;
 use App\Http\Controllers\EstadoServicioController;
 use App\Http\Controllers\HistorialEstadoController;
+use App\Http\Controllers\TecnicoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -19,6 +20,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::resource('clientes', ClienteController::class);
 Route::resource('equipos', EquipoController::class);
 Route::resource('servicios', ServicioController::class);
+Route::resource('tecnicos', TecnicoController::class);
 Route::resource('detalle_reparaciones', DetalleReparacionController::class);
 Route::resource('marcas', MarcaController::class);
 Route::resource('tipos_equipos', TipoEquipoController::class);

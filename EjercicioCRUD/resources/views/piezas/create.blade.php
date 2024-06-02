@@ -25,6 +25,7 @@
             <div class="mb-3">
                 <label for="id_proveedor" class="form-label">Proveedor</label>
                 <select class="form-control" id="id_proveedor" name="id_proveedor" required>
+                <option value="">Sin selección</option>
                     @foreach($proveedores as $proveedor)
                         <option value="{{ $proveedor->id }}">{{ $proveedor->nombre }}</option>
                     @endforeach

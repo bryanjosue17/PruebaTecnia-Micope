@@ -12,7 +12,7 @@
             <label class="form-label">Nombre</label>
             <p>{{ $tipos_equipo->nombre }}</p>
         </div>
-        <a href="{{ route('tipos_equipos.index') }}" class="btn btn-primary">Volver</a>
+        <a href="{{ route('tipos_equipos.index') }}" class="btn btn-secondary">Volver a la lista</a>
     </div>
 </div>
 @endsection
